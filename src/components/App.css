@@ -1,0 +1,9 @@
+.addContactBtn{
+border-radius: 4px;
+height: 25px;
+margin-top: 15px;
+margin-left: 85px;
+background-color: rgb(241, 173, 217);
+border: 1px solid black;
+color:  black;
+}
