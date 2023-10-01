@@ -18,6 +18,7 @@ export class ContactsForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
+
     if (
       this.state.contacts.some(
         contact => contact.name === name && contact.number === number
@@ -37,6 +38,7 @@ export class ContactsForm extends Component {
         alertMessage: '',
       }));
     }
+
     this.props.onSubmit({ name, number });
     this.setState({ name: '', number: '' });
   };
