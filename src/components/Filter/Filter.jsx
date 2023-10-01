@@ -7,7 +7,7 @@ export const Filter = ({ type, value, onChange }) => {
       <h2 className="filterTitle">Contacts</h2>
       <p className="filterText">Find contact by name</p>
       <input
-        className="filterInput"
+        className="form-control filterInput"
         type={type}
         value={value}
         onChange={onChange}

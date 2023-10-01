@@ -3,14 +3,13 @@ import { ContactsForm } from './ContactsForm/ContactsForm';
 import { Filter } from './Filter/Filter';
 import { nanoid } from 'nanoid';
 import { ContactList } from './ContactList/ContactList';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 export class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    name: '',
-    number: '',
   };
 
   handleChange = event => {
@@ -56,27 +55,29 @@ export class App extends Component {
     });
 
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.handleSubmit}>
           <ContactsForm
             label="Name"
+            className="form-label"
             name="name"
             type="text"
+            placeholder="Ivan"
             id={nanoid()}
+            value={this.state.name}
             onChange={this.handleChange}
           />
           <ContactsForm
             label="Number"
+            className="form-label"
             name="number"
             type="number"
+            placeholder="000-00-00"
             id={nanoid()}
+            value={this.state.number}
             onChange={this.handleChange}
           />
-          <button
-            className="addContactBtn"
-            type="submit"
-            // onChange={this.handleChange}
-          >
+          <button className="addContactBtn" type="submit">
             Add contact
           </button>
         </form>
