@@ -7,6 +7,7 @@ export class ContactsForm extends Component {
   state = {
     name: '',
     number: '',
+    contacts: [],
   };
 
   handleChange = event => {
@@ -17,9 +18,26 @@ export class ContactsForm extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { name, number } = this.state;
-
+    if (
+      this.state.contacts.some(
+        contact => contact.name === name && contact.number === number
+      )
+    ) {
+      alert(`"${name}" is already in contacts!`);
+    } else {
+      const newContact = {
+        name: name,
+        number: number,
+        id: nanoid(),
+      };
+      this.setState(prevState => ({
+        contacts: [...prevState.contacts, newContact],
+        name: '',
+        number: '',
+        alertMessage: '',
+      }));
+    }
     this.props.onSubmit({ name, number });
-
     this.setState({ name: '', number: '' });
   };
 
