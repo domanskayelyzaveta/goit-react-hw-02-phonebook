@@ -29,6 +29,15 @@ export class App extends Component {
   };
 
   handleFormSubmit = data => {
+    const { name, number } = data;
+    if (
+      this.state.contacts.some(
+        contact => contact.name === name && contact.number === number
+      )
+    ) {
+      alert(`"${name}" is already in contacts!`);
+      return;
+    }
     this.setState(prevState => ({
       contacts: [...prevState.contacts, { ...data, id: nanoid() }],
     }));
@@ -47,6 +56,7 @@ export class App extends Component {
     return (
       <div className="container">
         <ContactsForm onSubmit={this.handleFormSubmit} />
+
         <Filter
           label="Name"
           name={this.state.name}
